@@ -51,8 +51,8 @@ const Dashboard = () => {
       title: 'total users',
       revenue: 1200,
       icon: PiUsersFourFill,
-      text: 'text-orange-400',
-      bg: 'bg-orange-100'
+      text: 'text-pink-400',
+      bg: 'bg-pink-100'
     },
     {
       id: 6,
@@ -77,10 +77,10 @@ const Dashboard = () => {
       <div className='md:w-[20%] hidden md:block'>
         <Sidebar />
       </div>
-      <div className='h-screen dark:bg-slate-900 md:w-[80%] w-full'>
+      <div className=' dark:bg-slate-900 md:w-[80%] w-full'>
         <div className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-4 w-full mt-4 flex justify-between rounded ">
           <div>
-            <div className='w-3/4 '>
+            <div className='md:w-3/4 w-full '>
               <h2 className='text-white text-xl font-semibold'>WELCOME TO DYAMS🎉</h2>
 
               <p className='text-white text-sm font-semibold my-3'> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque nisi non explicabo eveniet eaque magnam ut, tempore officia facilis ipsum.</p>
@@ -89,11 +89,11 @@ const Dashboard = () => {
               </button>
             </div>
           </div>
-          <div className='w-1/4'>
+          <div className='w-1/4 md:block hidden'>
             <img className='w-full h-[100%] object-cover' src={cart} alt="" />
           </div>
         </div>
-        <div className='flex  gap-2  md:gap-4 md:justify-stretch  flex-wrap mt-4'>
+        <div className='flex  gap-2 justify-between  md:gap-4 md:justify-stretch  flex-wrap mt-4'>
           {
             data.map((item) => (
               <DashboardItem key={item.id} item={item} />
