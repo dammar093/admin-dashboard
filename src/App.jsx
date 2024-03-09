@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements, useLocation } from 'react-router-dom'
 import Layout from './components/layout/layout'
 import Profile from './pages/profile/Profile'
 import Order from './pages/order/Order'
 import User from './pages/user/User'
 import Products from './pages/products/Products'
-import Dashboard from './pages/daschboard/Dashboard'
+import Dashboard from './pages/dashboard/Dashboard'
+import Category from './pages/category/Category'
+import Transaction from './pages/transaction/Transaction'
 
 
 const App = () => {
@@ -26,11 +28,14 @@ const App = () => {
         <Route path='order' element={<Order />} />
         <Route path='products' element={<Products />} />
         <Route path='user' element={<User />} />
+        <Route path='category' element={<Category />} />
+        <Route path='transaction' element={<Transaction />} />
       </Route>
     )
   )
   return (
     <div>
+      <ScrollToTop />
       <RouterProvider router={router} />
     </div>
   )

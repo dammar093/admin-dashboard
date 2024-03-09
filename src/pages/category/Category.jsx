@@ -1,8 +1,7 @@
 import React from 'react'
 import Sidebar from '../../components/sidebar/Sidebar'
 
-
-const User = () => {
+const Category = () => {
   return (
     <div className='dark:bg-slate-900 flex w-full'>
       <Sidebar />
@@ -13,4 +12,4 @@ const User = () => {
   )
 }
 
-export default User
+export default Category
