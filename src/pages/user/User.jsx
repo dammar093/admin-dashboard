@@ -31,15 +31,34 @@ const User = () => {
       active: false,
       lastActive: new Date().getMinutes().toLocaleString()
     },
+    {
+      id: 4,
+      name: 'Juli',
+      address: 'Laljhadi 04,Danga Jain, Kanchanpur',
+      avatar: 'https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=600',
+      payment: 12000,
+      active: false,
+      lastActive: new Date().getMinutes().toLocaleString()
+    },
+    {
+      id: 5,
+      name: 'Juli',
+      address: 'Laljhadi 04,Danga Jain, Kanchanpur',
+      avatar: 'https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=600',
+      payment: 12000,
+      active: false,
+      lastActive: new Date().getMinutes().toLocaleString()
+    },
+
   ]
   return (
     <div className='dark:bg-slate-900 flex w-full'>
       <div className='md:w-[20%] hidden md:block'>
         <Sidebar />
       </div>
-      <div className='h-screen dark:bg-slate-900 md:w-[80%] w-full p-2 mt-4'>
+      <div className='min-h-screen dark:bg-slate-900 md:w-[80%] w-full p-2 mt-4'>
 
-        <input className="float-right	my-2 boredr-2 border-gray-600 px-4 py-1 rounded  dark:text-white text-gray-600 border-2 border-solid " type="text" placeholder='search...' />
+        <input className="float-right	my-2 boredr-2 border-gray-600 px-4 py-1 rounded  dark:text-white text-gray-600 border-2 border-solid dark:bg-slate-800" type="text" placeholder='search...' />
         <table className="table-auto overflow-x-auto w-full p-2 ">
           <thead>
             <tr className='border-solide border-gray-100 border-2 text-gray-700 text-md font-semibold dark:text-white p-4'>
@@ -51,7 +70,7 @@ const User = () => {
               <th></th>
             </tr>
           </thead>
-          <tbody className='text-gray-600 text-md dark:text-white center'>
+          <tbody className='text-gray-600 text-md dark:text-white center capitalize'>
             {
               users.map((user) => (
                 <tr className='border-solide border-gray-100 border-2 space-y-3 text-center border-spacing-y-1w-full' key={user.id} >
