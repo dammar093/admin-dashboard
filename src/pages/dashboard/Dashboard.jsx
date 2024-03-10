@@ -21,7 +21,7 @@ const Dashboard = () => {
     {
       id: 1,
       title: 'total revenue',
-      revenue: `$${1200.00}`,
+      revenue: `Rs.${1200.00}`,
       icon: TfiMoney,
       text: 'text-sky-400',
       bg: 'bg-sky-100'

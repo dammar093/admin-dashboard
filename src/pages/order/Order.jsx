@@ -59,7 +59,7 @@ const Order = () => {
                     <td className='text-sm'>{order.order ? <span className='bg-green-300 text-gray-700 dark:text-white px-2 rounded-xl cursor-pointer'>delevered</span> : <span className='bg-red-300 text-gray-700 dark:text-white px-2 rounded-xl cursor-pointer'>pending</span>}</td>
                     <td>{order.acc}</td>
                     <td>{order.contact}</td>
-                    <td>{order.products.reduce((total, product) => {
+                    <td>Rs.{order.products.reduce((total, product) => {
                       return total + (product.price * product.quantity);
                     }, 0)}</td>
                     <td className='text-2xl font-semibold text-sky-400'><Link to="#"><FaEye /></Link></td>
