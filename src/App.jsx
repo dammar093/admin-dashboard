@@ -7,7 +7,7 @@ import User from './pages/user/User'
 import Products from './pages/products/Products'
 import Dashboard from './pages/dashboard/Dashboard'
 import Category from './pages/category/Category'
-import Transaction from './pages/transaction/Transaction'
+
 
 
 const App = () => {
@@ -29,7 +29,6 @@ const App = () => {
         <Route path='products' element={<Products />} />
         <Route path='user' element={<User />} />
         <Route path='category' element={<Category />} />
-        <Route path='transaction' element={<Transaction />} />
       </Route>
     )
   )

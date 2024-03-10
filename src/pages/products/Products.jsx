@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 import Sidebar from '../../components/sidebar/Sidebar'
 import { MdDelete } from "react-icons/md";
-import { FaEdit } from "react-icons/fa";
+import { FaEye } from "react-icons/fa";
 import { useDispatch, useSelector } from 'react-redux';
 import { removeProduct, search, addProduct } from '../../feature/products/productSlice';
 import { IoIosAddCircle, IoMdClose } from "react-icons/io";
 import { addImage, removeImage } from '../../feature/image/imageSlice';
 import { addColor, removeColor } from '../../feature/color/colorSlice';
 import { addSize, removeSize } from '../../feature/size/sizeSlice';
-
+import { Link } from 'react-router-dom';
 
 const Products = () => {
   const products = useSelector(state => state.products.products)
@@ -54,7 +54,7 @@ const Products = () => {
       <div className={sidebar ? 'md:w-[20%] hidden w-full' : `block md:w-[20%]  w-full`}>
         <Sidebar />
       </div>
-      <div className={sidebar ? 'dark:bg-slate-900  w-full min-h-screen p-2' : ' dark:bg-slate-900 md:w-[80%] w-full min-h-screen '}>
+      <div className={sidebar ? 'dark:bg-slate-900  w-full min-h-screen p-2' : ' dark:bg-slate-900 md:w-[80%] w-full min-h-screen p-2'}>
         <div className='my-10 border-dashed border-2 border-gray-400 p-4'>
           <form className='flex flex-wrap gap-2 w-full items-center' onSubmit={handelProducts}>
             <div className='w-full flex items-center gap-1 '>
@@ -69,7 +69,7 @@ const Products = () => {
               <div className='w-1/2'>
                 <label htmlFor="category" className='text-md text-gray-600 text-md font-semibold dark:text-white'>Category</label>
                 <br />
-                <select name="" id="category" className='w-full text-gray-600 font-semibold dark:bg-slate-900 dark:text-white capitalize px-2 py-1 border-2 borer-solid border-gray-300 rounded'
+                <select name="" id="category" className='w-full text-gray-600 font-semibold dark:bg-slate-900 dark:text-white capitalize px-2 py-1 border-2 borer-solid border-gray-400 rounded'
                   value={cate}
                   onChange={(e) => setCate(e.target.value)}
                 >
@@ -187,7 +187,7 @@ const Products = () => {
         </div>
         <div>
 
-          <input className="float-right	my-2 boredr-2 border-gray-600 px-4 py-1 rounded  dark:text-white text-gray-600 border-2 border-solid dark:bg-slate-800 " type="text" placeholder='search...'
+          <input className="float-right	my-2 boredr-2 border-gray-400 px-4 py-1 rounded  dark:text-white text-gray-600 border-2 border-solid dark:bg-slate-800 " type="text" placeholder='search...'
 
             onChange={(e) => dispatch(search(e.target.value))}
           />
@@ -225,7 +225,7 @@ const Products = () => {
                     <td>Rs.{product.oldPrice}</td>
                     <td>Rs.{product.oldPrice - (product.discount * 100 / product.oldPrice).toFixed(2)}</td>
                     <td>{product.discount}%</td>
-                    <td className='text-2xl font-semibold text-sky-600 cursor-pointer'><FaEdit /></td>
+                    <td className='text-2xl font-semibold text-sky-400'><Link to="#"><FaEye /></Link></td>
                     <td className='text-2xl text-red-600 font-semibold cursor-pointer'><MdDelete
                       onClick={() => dispatch(removeProduct(product.id))}
                     /> </td>

@@ -19,13 +19,15 @@ const Navbar = () => {
   const sidebar = useSelector(state => state.sidebar.sidebar)
 
 
-  const handelLightMode = () => {
-    dispatch(lightMode('light'))
+  const handelLightMode = (e) => {
+    e.stopPropagation()
+    dispatch(lightMode('dark'))
     setIsDark(prev => !prev)
   }
 
-  const handelDarkMode = () => {
-    dispatch(darkMode('dark'))
+  const handelDarkMode = (e) => {
+    e.stopPropagation()
+    dispatch(darkMode('light'))
     setIsDark(prev => !prev)
   }
   // actual change in theme
@@ -46,9 +48,9 @@ const Navbar = () => {
       </div>
       <div>
         <div className=' relative flex items-center gap-2'>
-          <div>
+          <div className={`w-16 h-8 flex items-center  rounded-full px-1 shadow-inner ${!isDark ? 'bg-slate-800' : 'bg-white'}`}  >
             {
-              isDark ? <CiDark className='text-3xl text-white cursor-pointer' onClick={handelDarkMode} /> : <CiLight className='text-3xl text-white cursor-pointer' onClick={handelLightMode} />
+              !isDark ? <CiDark className='text-3xl text-white  translate-x-7 cursor-pointer' onClick={handelDarkMode} /> : <CiLight className='text-3xl text-gray-700  cursor-pointer' onClick={handelLightMode} />
             }
           </div>
           <div className='flex items-center'>
@@ -71,7 +73,7 @@ const Navbar = () => {
           }
         </div>
       </div>
-    </header>
+    </header >
   )
 }
 
