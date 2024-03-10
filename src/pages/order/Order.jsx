@@ -3,188 +3,22 @@ import Sidebar from '../../components/sidebar/Sidebar'
 import { MdOutlinePerson4, MdDelete } from "react-icons/md";
 import { FaEye } from "react-icons/fa";
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteOrder, search } from '../../feature/order/orderSlice';
 
 
 const Order = () => {
-  const orders = [
-    {
-      id: 1,
-      name: 'Dyams',
-      avatar: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=600',
-      products: [
-        {
-          id: 1,
-          name: 'shirt',
-          quantity: 2,
-          image: 'https://images.pexels.com/photos/2205839/pexels-photo-2205839.jpeg?auto=compress&cs=tinysrgb&w=600',
-          price: 120
-
-        },
-        {
-          id: 2,
-          name: 'shirt',
-          quantity: 2,
-          image: 'https://images.pexels.com/photos/2205839/pexels-photo-2205839.jpeg?auto=compress&cs=tinysrgb&w=600',
-          price: 120
-
-        }
-      ],
-      method: 'e-sewa',
-      payment: true,
-      address: 'laljhasi-04 ,Kanchanpur',
-      acc: '123234355435',
-      oredr: false,
-      contact: '9809498493'
-    },
-    {
-      id: 2,
-      name: 'hari',
-      avatar: 'https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=600',
-      products: [
-        {
-          id: 1,
-          name: 'shirt',
-          quantity: 2,
-          image: 'https://images.pexels.com/photos/2205839/pexels-photo-2205839.jpeg?auto=compress&cs=tinysrgb&w=600',
-          price: 120
-        },
-        {
-          id: 2,
-          name: 'shirt',
-          quantity: 2,
-          image: 'https://images.pexels.com/photos/2205839/pexels-photo-2205839.jpeg?auto=compress&cs=tinysrgb&w=600',
-          price: 120
-        },
-
-      ],
-      method: 'e-sewa',
-      payment: false,
-      address: 'laljhasi-04 ,Kanchanpur',
-      acc: 'xxsdshjjk12',
-      order: true,
-      contact: '9809498493'
-    },
-    {
-      id: 3,
-      name: 'hari',
-      avatar: 'https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=600',
-      products: [
-        {
-          id: 1,
-          name: 'shirt',
-          quantity: 2,
-          image: 'https://images.pexels.com/photos/2205839/pexels-photo-2205839.jpeg?auto=compress&cs=tinysrgb&w=600',
-          price: 120
-        },
-        {
-          id: 2,
-          name: 'shirt',
-          quantity: 2,
-          image: 'https://images.pexels.com/photos/2205839/pexels-photo-2205839.jpeg?auto=compress&cs=tinysrgb&w=600',
-          price: 120
-        },
-
-      ],
-      method: 'e-sewa',
-      payment: false,
-      address: 'laljhasi-04 ,Kanchanpur',
-      acc: 'xxsdshjjk12',
-      order: true,
-      contact: '9809498493'
-    },
-    {
-      id: 4,
-      name: 'hari',
-      avatar: 'https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=600',
-      products: [
-        {
-          id: 1,
-          name: 'shirt',
-          quantity: 2,
-          image: 'https://images.pexels.com/photos/2205839/pexels-photo-2205839.jpeg?auto=compress&cs=tinysrgb&w=600',
-          price: 120
-        },
-        {
-          id: 2,
-          name: 'shirt',
-          quantity: 2,
-          image: 'https://images.pexels.com/photos/2205839/pexels-photo-2205839.jpeg?auto=compress&cs=tinysrgb&w=600',
-          price: 120
-        },
-
-      ],
-      method: 'e-sewa',
-      payment: false,
-      address: 'laljhasi-04 ,Kanchanpur',
-      acc: 'xxsdshjjk12',
-      order: true,
-      contact: '9809498493'
-    },
-    {
-      id: 5,
-      name: 'hari',
-      avatar: 'https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=600',
-      products: [
-        {
-          id: 1,
-          name: 'shirt',
-          quantity: 2,
-          image: 'https://images.pexels.com/photos/2205839/pexels-photo-2205839.jpeg?auto=compress&cs=tinysrgb&w=600',
-          price: 120
-        },
-        {
-          id: 2,
-          name: 'shirt',
-          quantity: 2,
-          image: 'https://images.pexels.com/photos/2205839/pexels-photo-2205839.jpeg?auto=compress&cs=tinysrgb&w=600',
-          price: 120
-        },
-
-      ],
-      method: 'e-sewa',
-      payment: false,
-      address: 'laljhasi-04 ,Kanchanpur',
-      acc: 'xxsdshjjk12',
-      order: true,
-      contact: '9809498493'
-    },
-    {
-      id: 6,
-      name: 'hari',
-      avatar: 'https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=600',
-      products: [
-        {
-          id: 1,
-          name: 'shirt',
-          quantity: 2,
-          image: 'https://images.pexels.com/photos/2205839/pexels-photo-2205839.jpeg?auto=compress&cs=tinysrgb&w=600',
-          price: 120
-        },
-        {
-          id: 2,
-          name: 'shirt',
-          quantity: 2,
-          image: 'https://images.pexels.com/photos/2205839/pexels-photo-2205839.jpeg?auto=compress&cs=tinysrgb&w=600',
-          price: 120
-        },
-
-      ],
-      method: 'e-sewa',
-      payment: false,
-      address: 'laljhasi-04 ,Kanchanpur',
-      acc: 'xxsdshjjk12',
-      order: true,
-      contact: '9809498493'
-    },
-
-  ]
+  const orders = useSelector(state => state.order.order)
+  const dispatch = useDispatch()
   return (
     <div className='dark:bg-slate-900 flex w-full'>
       <div className='md:w-[20%] hidden md:block'>
         <Sidebar />
       </div>
       <div className='min-h-screen dark:bg-slate-900 md:w-[80%] w-full  p-4'>
-        <input className="float-right	my-2 boredr-2 border-gray-600 px-4 py-1 rounded  dark:text-white text-gray-600 border-2 border-solid dark:bg-slate-800 " type="text" placeholder='search...' />
+        <input className="float-right	my-2 boredr-2 border-gray-600 px-4 py-1 rounded  dark:text-white text-gray-600 border-2 border-solid dark:bg-slate-800 " type="text" placeholder='search...'
+          onChange={(e) => dispatch(search(e.target.value))}
+        />
         <div className=' w-full overflow-x-auto '>
           <table className=" oveflow-x-scroll table-auto w-full  ">
             <thead >
@@ -221,7 +55,7 @@ const Order = () => {
                       ))
                     }</td>
                     <td>{order.method}</td>
-                    <td className='text-sm'>{order.payment ? <span className='bg-green-300 text-gray-700 dark:text-white px-2 rounded-xl cursor-pointer'>delevered</span> : <span className='bg-red-300 text-gray-700 dark:text-white px-2 rounded-xl cursor-pointer'>pending</span>}</td>
+                    <td className='text-sm'>{order.payment ? <span className='bg-green-300 text-gray-700 dark:text-white px-2 rounded-xl cursor-pointer'>paid</span> : <span className='bg-red-300 text-gray-700 dark:text-white px-2 rounded-xl cursor-pointer'>pending</span>}</td>
                     <td className='text-sm'>{order.order ? <span className='bg-green-300 text-gray-700 dark:text-white px-2 rounded-xl cursor-pointer'>delevered</span> : <span className='bg-red-300 text-gray-700 dark:text-white px-2 rounded-xl cursor-pointer'>pending</span>}</td>
                     <td>{order.acc}</td>
                     <td>{order.contact}</td>
@@ -229,7 +63,9 @@ const Order = () => {
                       return total + (product.price * product.quantity);
                     }, 0)}</td>
                     <td className='text-2xl font-semibold text-sky-400'><Link to="#"><FaEye /></Link></td>
-                    <td className='text-2xl text-red-600 font-semibold cursor-pointer'><MdDelete /> </td>
+                    <td className='text-2xl text-red-600 font-semibold cursor-pointer'><MdDelete
+                      onClick={() => dispatch(deleteOrder(order.id))}
+                    /> </td>
                   </tr>
                 ))
               }

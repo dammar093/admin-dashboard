@@ -1,102 +1,15 @@
 import React from 'react'
 import Sidebar from '../../components/sidebar/Sidebar'
-import { MdOutlinePerson4, MdDelete } from "react-icons/md";
+import { MdDelete } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { removeProduct, search } from '../../feature/products/productSlice';
 
 
 const Products = () => {
+  const products = useSelector(state => state.products.products)
+  const dispatch = useDispatch()
 
-  const products = [
-    {
-      id: 1,
-      name: 'shirt',
-      oldPrice: 120,
-      quantity: 100,
-      image: 'https://images.pexels.com/photos/11035166/pexels-photo-11035166.jpeg?auto=compress&cs=tinysrgb&w=600',
-      category: 'short',
-      discount: 15,
-      size: ['m', 'xl'],
-      color: ['red', 'green']
-    },
-    {
-      id: 2,
-      name: 'shirt',
-      oldPrice: 120,
-      quantity: 100,
-      image: 'https://images.pexels.com/photos/11035166/pexels-photo-11035166.jpeg?auto=compress&cs=tinysrgb&w=600',
-      category: 'short',
-      discount: 10,
-      size: ['m', 'xl'],
-      color: ['white', 'black']
-    },
-    {
-      id: 3,
-      name: 'shirt',
-      oldPrice: 120,
-      quantity: 100,
-      image: 'https://images.pexels.com/photos/11035166/pexels-photo-11035166.jpeg?auto=compress&cs=tinysrgb&w=600',
-      category: 'short',
-      discount: 10,
-      size: ['m', 'xl'],
-      color: ['white', 'black']
-    },
-    {
-      id: 4,
-      name: 'shirt',
-      oldPrice: 120,
-      quantity: 100,
-      image: 'https://images.pexels.com/photos/11035166/pexels-photo-11035166.jpeg?auto=compress&cs=tinysrgb&w=600',
-      category: 'short',
-      discount: 10,
-      size: ['m', 'xl'],
-      color: ['white', 'black']
-    },
-    {
-      id: 5,
-      name: 'shirt',
-      oldPrice: 120,
-      quantity: 100,
-      image: 'https://images.pexels.com/photos/11035166/pexels-photo-11035166.jpeg?auto=compress&cs=tinysrgb&w=600',
-      category: 'short',
-      discount: 10,
-      size: ['m', 'xl'],
-      color: ['white', 'black']
-    },
-    {
-      id: 6,
-      name: 'shirt',
-      oldPrice: 120,
-      quantity: 100,
-      image: 'https://images.pexels.com/photos/11035166/pexels-photo-11035166.jpeg?auto=compress&cs=tinysrgb&w=600',
-      category: 'short',
-      discount: 10,
-      size: ['m', 'xl'],
-      color: ['white', 'black']
-    },
-    {
-      id: 7,
-      name: 'shirt',
-      oldPrice: 120,
-      quantity: 100,
-      image: 'https://images.pexels.com/photos/11035166/pexels-photo-11035166.jpeg?auto=compress&cs=tinysrgb&w=600',
-      category: 'short',
-      discount: 10,
-      size: ['m', 'xl'],
-      color: ['white', 'black']
-    },
-    {
-      id: 8,
-      name: 'shirt',
-      oldPrice: 120,
-      quantity: 100,
-      image: 'https://images.pexels.com/photos/11035166/pexels-photo-11035166.jpeg?auto=compress&cs=tinysrgb&w=600',
-      category: 'short',
-      discount: 10,
-      size: ['m', 'xl'],
-      color: ['white', 'black']
-    }
-  ]
 
   return (
     <div className='dark:bg-slate-900 flex w-full'>
@@ -104,7 +17,10 @@ const Products = () => {
         <Sidebar />
       </div>
       <div className='min-h-screen dark:bg-slate-900 md:w-[80%] w-full  p-4'>
-        <input className="float-right	my-2 boredr-2 border-gray-600 px-4 py-1 rounded  dark:text-white text-gray-600 border-2 border-solid dark:bg-slate-800 " type="text" placeholder='search...' />
+        <input className="float-right	my-2 boredr-2 border-gray-600 px-4 py-1 rounded  dark:text-white text-gray-600 border-2 border-solid dark:bg-slate-800 " type="text" placeholder='search...'
+
+          onChange={(e) => dispatch(search(e.target.value))}
+        />
         <div className=' w-full overflow-x-auto '>
           <table className=" oveflow-x-scroll table-auto w-full  ">
             <thead >
@@ -139,7 +55,9 @@ const Products = () => {
                     <td>{product.oldPrice - (product.discount * 100 / product.oldPrice).toFixed(2)}</td>
                     <td>{product.discount}%</td>
                     <td className='text-2xl font-semibold text-sky-600 cursor-pointer'><FaEdit /></td>
-                    <td className='text-2xl text-red-600 font-semibold cursor-pointer'><MdDelete /> </td>
+                    <td className='text-2xl text-red-600 font-semibold cursor-pointer'><MdDelete
+                      onClick={() => dispatch(removeProduct(product.id))}
+                    /> </td>
                   </tr>
                 ))
               }

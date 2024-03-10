@@ -8,16 +8,20 @@ import { RxCross2 } from "react-icons/rx";
 import { PiUsersFourFill } from "react-icons/pi";
 import { MdCategory } from "react-icons/md";
 import DashboardItem from '../../components/dashboardItem/DashboardItem';
+import { useSelector } from 'react-redux';
 
 
 
 const Dashboard = () => {
 
+  const products = useSelector(state => state.products.products)
+  const categories = useSelector(state => state.category.category)
+  const user = useSelector(state => state.user.user)
   const data = [
     {
       id: 1,
       title: 'total revenue',
-      revenue: 1200.00,
+      revenue: `$${1200.00}`,
       icon: TfiMoney,
       text: 'text-sky-400',
       bg: 'bg-sky-100'
@@ -32,7 +36,7 @@ const Dashboard = () => {
     },
     {
       id: 3,
-      title: 'deleiverd',
+      title: 'deleivered',
       revenue: 1200,
       icon: FaCarSide,
       text: 'text-green-400',
@@ -49,7 +53,7 @@ const Dashboard = () => {
     {
       id: 5,
       title: 'total users',
-      revenue: 1200,
+      revenue: user.length,
       icon: PiUsersFourFill,
       text: 'text-pink-400',
       bg: 'bg-pink-100'
@@ -57,7 +61,7 @@ const Dashboard = () => {
     {
       id: 6,
       title: 'total products',
-      revenue: 1200,
+      revenue: products.length,
       icon: FaSitemap,
       text: 'text-teal-400',
       bg: 'bg-teal-100'
@@ -65,7 +69,7 @@ const Dashboard = () => {
     {
       id: 7,
       title: 'total category',
-      revenue: 12,
+      revenue: categories.length,
       icon: MdCategory,
       text: 'text-rose-400',
       bg: 'bg-rose-100'

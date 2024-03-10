@@ -1,56 +1,12 @@
 import React from 'react'
 import Sidebar from '../../components/sidebar/Sidebar'
 import { MdOutlinePerson4, MdDelete } from "react-icons/md";
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteUser, search } from '../../feature/user/userSlice';
 
 const User = () => {
-  const users = [
-    {
-      id: 1,
-      name: 'Dymas',
-      address: 'Laljhadi 04,Danga Jain, Kanchanpur',
-      avatar: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=600',
-      payment: 12000,
-      active: true,
-      lastActive: new Date().getMinutes().toLocaleString()
-    },
-    {
-      id: 2,
-      name: 'Ruhi',
-      address: 'Laljhadi 04,Danga Jain, Kanchanpur',
-      avatar: 'https://images.pexels.com/photos/1065084/pexels-photo-1065084.jpeg?auto=compress&cs=tinysrgb&w=600',
-      payment: 12000,
-      active: true,
-      lastActive: new Date().getMinutes().toLocaleString()
-    },
-    {
-      id: 3,
-      name: 'Juli',
-      address: 'Laljhadi 04,Danga Jain, Kanchanpur',
-      avatar: 'https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=600',
-      payment: 12000,
-      active: false,
-      lastActive: new Date().getMinutes().toLocaleString()
-    },
-    {
-      id: 4,
-      name: 'Juli',
-      address: 'Laljhadi 04,Danga Jain, Kanchanpur',
-      avatar: 'https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=600',
-      payment: 12000,
-      active: false,
-      lastActive: new Date().getMinutes().toLocaleString()
-    },
-    {
-      id: 5,
-      name: 'Juli',
-      address: 'Laljhadi 04,Danga Jain, Kanchanpur',
-      avatar: 'https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=600',
-      payment: 12000,
-      active: false,
-      lastActive: new Date().getMinutes().toLocaleString()
-    },
-
-  ]
+  const users = useSelector(state => state.user.user);
+  const dispatch = useDispatch()
   return (
     <div className='dark:bg-slate-900 flex w-full'>
       <div className='md:w-[20%] hidden md:block'>
@@ -58,7 +14,9 @@ const User = () => {
       </div>
       <div className='min-h-screen dark:bg-slate-900 md:w-[80%] w-full p-2 mt-4'>
 
-        <input className="float-right	my-2 boredr-2 border-gray-600 px-4 py-1 rounded  dark:text-white text-gray-600 border-2 border-solid dark:bg-slate-800" type="text" placeholder='search...' />
+        <input className="float-right	my-2 boredr-2 border-gray-600 px-4 py-1 rounded  dark:text-white text-gray-600 border-2 border-solid dark:bg-slate-800" type="text" placeholder='search...'
+          onChange={(e) => dispatch(search(e.target.value))}
+        />
         <table className="table-auto overflow-x-auto w-full p-2 ">
           <thead>
             <tr className='border-solide border-gray-100 border-2 text-gray-700 text-md font-semibold dark:text-white p-4'>
@@ -79,7 +37,9 @@ const User = () => {
                   <td>{user.name}</td>
                   <td>{user.address}</td>
                   <td>Rs. {user.payment}</td>
-                  <td className='text-2xl text-red-600 font-semibold cursor-pointer'><MdDelete /></td>
+                  <td className='text-2xl text-red-600 font-semibold cursor-pointer'><MdDelete
+                    onClick={() => dispatch(deleteUser(user.id))}
+                  /></td>
                 </tr>
               ))
             }
