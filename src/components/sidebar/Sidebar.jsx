@@ -10,8 +10,8 @@ const Sidebar = () => {
   return (
     <aside className='h-screen  z-10 dark:bg-slate-900 fixed top-16 left-0 shadow-xl bg-slate-400 md:bg-white'>
       <div>
-        <div className='my-2 flex justify-center items-center'>
-          <Link to='/' className='text-3xl text-gray-600 font-extrabold dark:text-white uppercase text-center'>Dyams</Link>
+        <div className='my-4  flex justify-center items-center'>
+          <Link to='/' className='text-3xl text-gray-600 font-extrabold dark:text-white uppercase '>Dyams</Link>
         </div>
         <div className='m-2 p-2'>
           <NavLink to="/" className={(({ isActive }) => isActive ? "bg-[#FA869B] text-white text-l font-semibold p-2 flex rounded-xl gap-2 items-center uppercase" : "flex gap-2 text-l font-semibold items-center dark:text-white text-gray-700 p-2 rounded-lg uppercase hover:bg-[#FA869B] hover:text-white hover:rounded-xl")} > <RxDashboard /> Dashboard</NavLink>
