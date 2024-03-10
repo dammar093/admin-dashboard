@@ -9,6 +9,7 @@ import { addCategory, deleteCategory, search } from '../../feature/category/cate
 const Category = () => {
 
   const categories = useSelector(state => state.category.category)
+  const sidebar = useSelector(state => state.sidebar.sidebar)
   const dispatch = useDispatch()
   const [name, setName] = useState('')
   const [image, setImage] = useState('')
@@ -22,10 +23,10 @@ const Category = () => {
 
   return (
     <div className='dark:bg-slate-900 flex w-full'>
-      <div className='md:w-[20%] hidden md:block'>
+      <div className={sidebar ? `md:w-[20%] hidden w-full` : `block w-full md:w-[20%]`}>
         <Sidebar />
       </div>
-      <div className='min-h-screen dark:bg-slate-900 md:w-[80%] w-full  p-4'>
+      <div className={sidebar ? 'dark:bg-slate-900  w-full min-h-screen p-2' : ' dark:bg-slate-900 md:w-[80%] w-full min-h-screen p-2'}>
 
         <div className='my-10 border-dashed border-2 border-gray-400 p-4'>
           <form className='flex flex-wrap gap-2 w-full items-center' onSubmit={handelsubmit}>

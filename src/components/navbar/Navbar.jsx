@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { FaRegUser } from "react-icons/fa";
-import { MdKeyboardArrowDown } from "react-icons/md";
+import { MdKeyboardArrowDown, MdMenu, MdClose } from "react-icons/md";
 import { CiLight } from "react-icons/ci";
 import { CiDark } from "react-icons/ci";
 import { darkMode, lightMode } from '../../feature/theme/themeSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import { toggleSidebar } from '../../feature/sidebar/sidebarSlice';
 
 
 
@@ -15,7 +16,7 @@ const Navbar = () => {
   const dispatch = useDispatch()
 
   const themeMode = useSelector(state => state.themeMode.themeMode)
-
+  const sidebar = useSelector(state => state.sidebar.sidebar)
 
 
   const handelLightMode = () => {
@@ -38,7 +39,11 @@ const Navbar = () => {
 
   return (
     <header className='bg-[#FA869B] w-full h-16 flex justify-between items-center p-4 sticky top-0 z-10'>
-      <div><span className='text-3xl text-white font-semibold line-through font-[cursive] uppercase'><Link to="/">Dayms</Link></span></div>
+      <div>
+        {
+          sidebar ? <MdMenu className='text-3xl font-semibold text-white cursor-pointer ' onClick={() => dispatch(toggleSidebar(false))} /> : <MdClose className='text-3xl font-semibold text-white cursor-pointer ' onClick={() => dispatch(toggleSidebar(true))} />
+        }
+      </div>
       <div>
         <div className=' relative flex items-center gap-2'>
           <div>

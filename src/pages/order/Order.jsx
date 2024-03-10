@@ -9,14 +9,17 @@ import { deleteOrder, search } from '../../feature/order/orderSlice';
 
 const Order = () => {
   const orders = useSelector(state => state.order.order)
+  const sidebar = useSelector(state => state.sidebar.sidebar)
+  // console.log(sidebar);
   const dispatch = useDispatch()
+
   return (
     <div className='dark:bg-slate-900 flex w-full'>
-      <div className='md:w-[20%] hidden md:block'>
+      <div className={sidebar ? 'md:w-[20%] hidden w-full' : `block md:w-[20%]  w-full`}>
         <Sidebar />
       </div>
-      <div className='min-h-screen dark:bg-slate-900 md:w-[80%] w-full  p-4'>
-        <input className="float-right	my-2 boredr-2 border-gray-600 px-4 py-1 rounded  dark:text-white text-gray-600 border-2 border-solid dark:bg-slate-800 " type="text" placeholder='search...'
+      <div className={sidebar ? 'dark:bg-slate-900  w-full min-h-screen p-2' : ' dark:bg-slate-900 md:w-[80%] w-full min-h-screen p-2'}>
+        <input className="float-right	my-2 boredr-2 border-gray-400 px-4 py-1 rounded  dark:text-white text-gray-600 border-2 border-solid dark:bg-slate-800 " type="text" placeholder='search...'
           onChange={(e) => dispatch(search(e.target.value))}
         />
         <div className=' w-full overflow-x-auto '>

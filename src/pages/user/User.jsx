@@ -6,15 +6,17 @@ import { deleteUser, search } from '../../feature/user/userSlice';
 
 const User = () => {
   const users = useSelector(state => state.user.user);
+  const sidebar = useSelector(state => state.sidebar.sidebar);
   const dispatch = useDispatch()
   return (
     <div className='dark:bg-slate-900 flex w-full'>
-      <div className='md:w-[20%] hidden md:block'>
+      <div className={sidebar ? `md:w-[20%] hidden w-full` : `block w-full md:w-[20%]`}>
         <Sidebar />
       </div>
-      <div className='min-h-screen dark:bg-slate-900 md:w-[80%] w-full p-2 mt-4'>
 
-        <input className="float-right	my-2 boredr-2 border-gray-600 px-4 py-1 rounded  dark:text-white text-gray-600 border-2 border-solid dark:bg-slate-800" type="text" placeholder='search...'
+      <div className={sidebar ? 'dark:bg-slate-900  w-full min-h-screen p-2' : ' dark:bg-slate-900 md:w-[80%] w-full min-h-screen p-2'}>
+
+        <input className="float-right	my-2 boredr-2 border-gray-400 px-4 py-1 rounded  dark:text-white text-gray-600 border-2 border-solid dark:bg-slate-800" type="text" placeholder='search...'
           onChange={(e) => dispatch(search(e.target.value))}
         />
         <table className="table-auto overflow-x-auto w-full p-2 ">

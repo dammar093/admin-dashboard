@@ -17,6 +17,7 @@ const Dashboard = () => {
   const products = useSelector(state => state.products.products)
   const categories = useSelector(state => state.category.category)
   const user = useSelector(state => state.user.user)
+  const sidebar = useSelector(state => state.sidebar.sidebar)
   const data = [
     {
       id: 1,
@@ -78,13 +79,13 @@ const Dashboard = () => {
   ]
   return (
     <div className='dark:bg-slate-900 flex w-full justify-between p-4'>
-      <div className='md:w-[20%] hidden md:block'>
+      <div className={sidebar ? `md:w-[20%] hidden w-full` : `block`}>
         <Sidebar />
       </div>
-      <div className=' dark:bg-slate-900 md:w-[80%] w-full'>
+      <div className={sidebar ? 'dark:bg-slate-900  w-full' : ' dark:bg-slate-900 md:w-[80%] w-full'}>
         <div className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-4 w-full mt-4 flex justify-between rounded ">
           <div>
-            <div className='md:w-3/4 w-full '>
+            <div className={sidebar ? 'mt-10 md:w-3/4 w-full' : 'md:w-3/4 w-full '}>
               <h2 className='text-white text-xl font-semibold'>WELCOME TO DYAMS🎉</h2>
 
               <p className='text-white text-sm font-semibold my-3'> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque nisi non explicabo eveniet eaque magnam ut, tempore officia facilis ipsum.</p>
@@ -97,7 +98,7 @@ const Dashboard = () => {
             <img className='w-full h-[100%] object-cover' src={cart} alt="" />
           </div>
         </div>
-        <div className='flex  gap-2 justify-between  md:gap-5 md:justify-stretch  flex-wrap mt-4'>
+        <div className={sidebar ? 'flex  gap-2 justify-between  md:gap-7 md:justify-stretch  flex-wrap mt-4' : 'flex  gap-2 justify-between  md:gap-5 md:justify-stretch  flex-wrap mt-4'}>
           {
             data.map((item) => (
               <DashboardItem key={item.id} item={item} />
