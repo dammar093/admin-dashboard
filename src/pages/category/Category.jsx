@@ -1,17 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Sidebar from '../../components/sidebar/Sidebar'
-import { MdOutlinePerson4, MdDelete } from "react-icons/md";
+import { MdDelete } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
-import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteCategory, search } from '../../feature/category/categorySlice';
+import { addCategory, deleteCategory, search } from '../../feature/category/categorySlice';
 
 
 const Category = () => {
 
   const categories = useSelector(state => state.category.category)
   const dispatch = useDispatch()
+  const [name, setName] = useState('')
+  const [image, setImage] = useState('')
 
+  const handelsubmit = (e) => {
+    e.preventDefault();
+    dispatch(addCategory({ id: Date.now(), name: name, image: image }))
+    setImage('')
+    setName('')
+  }
 
   return (
     <div className='dark:bg-slate-900 flex w-full'>
@@ -19,9 +26,37 @@ const Category = () => {
         <Sidebar />
       </div>
       <div className='min-h-screen dark:bg-slate-900 md:w-[80%] w-full  p-4'>
-        <input className="float-right	my-2 boredr-2 border-gray-600 px-4 py-1 rounded  dark:text-white text-gray-600 border-2 border-solid dark:bg-slate-800 " type="text" placeholder='search...'
-          onChange={(e) => dispatch(search(e.target.value))}
-        />
+
+        <div className='my-10 border-dashed border-2 border-gray-400 p-4'>
+          <form className='flex flex-wrap gap-2 w-full items-center' onSubmit={handelsubmit}>
+            <div className='w-full'>
+              <label className='text-gray-500 dark:text-white text-md font-semibold m-1' htmlFor="name">Category Type:</label>
+              <br />
+              <input className='border-solid  border-2 border-gray-400 px-2 py-1 rounded text-gray-600 dark:text-white dark:bg-slate-900 w-full' type="text" placeholder='Enter name of category' id='name'
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </div >
+            <div className='w-full'>
+              <label className='text-gray-500 dark:text-white text-md font-semibold m-1' htmlFor="url">Iamge URL:</label>
+              <br />
+              <input className='border-solid  border-2 border-gray-400 px-2 py-1 rounded text-gray-600 dark:text-white dark:bg-slate-900 w-full' type="text" placeholder='Enter image url' id='url'
+                value={image}
+                onChange={(e) => setImage(e.target.value.trim())}
+              />
+            </div>
+            <div className='mt-4'>
+              <button className="py-2 px-5 bg-[#FA869B] text-white font-semibold rounded-full shadow-md hover:bg-[#d04d65] focus:outline-none focus:ring focus:ring-[#FA869B] focus:ring-opacity-75">
+                Add Category
+              </button>
+            </div>
+          </form>
+        </div>
+        <div>
+          <input className="float-right	my-2 boredr-2 border-gray-400 px-4 py-1 rounded  dark:text-white text-gray-600 border-2 border-solid dark:bg-slate-800 " type="text" placeholder='search...'
+            onChange={(e) => dispatch(search(e.target.value))}
+          />
+        </div>
         <div className=' w-full overflow-x-auto '>
           <table className="table-auto oveflow-x-scroll  w-full  ">
             <thead >

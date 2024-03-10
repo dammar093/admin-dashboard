@@ -4,6 +4,9 @@ import productReducer from '../feature/products/productSlice'
 import orderReducer from '../feature/order/orderSlice'
 import userReducer from '../feature/user/userSlice'
 import categoryReducer from '../feature/category/categorySlice'
+import imageReducer from '../feature/image/imageSlice'
+import colorReducer from '../feature/color/colorSlice'
+import sizeReducer from '../feature/size/sizeSlice'
 
 export const store=configureStore({
   reducer:{
@@ -11,6 +14,9 @@ export const store=configureStore({
     products:productReducer,
     order:orderReducer,
     user:userReducer,
-    category:categoryReducer
+    category:categoryReducer,
+    image:imageReducer,
+    color:colorReducer,
+    size:sizeReducer
   }
 })
