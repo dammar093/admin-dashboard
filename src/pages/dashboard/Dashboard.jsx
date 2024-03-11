@@ -9,6 +9,8 @@ import { PiUsersFourFill } from "react-icons/pi";
 import { MdCategory } from "react-icons/md";
 import DashboardItem from '../../components/dashboardItem/DashboardItem';
 import { useSelector } from 'react-redux';
+import Barchart from '../../components/barchart/Barchart';
+import Piechart from '../../components/peichart/Piechart';
 
 
 
@@ -105,6 +107,15 @@ const Dashboard = () => {
             ))
           }
         </div>
+        <div className='flex justify-strech gap-2 items-center flex-wrap text-gray-600 dark:text-white'>
+          <div>
+            <Barchart />
+          </div>
+          <div>
+            <Piechart />
+          </div>
+        </div>
+        <p className='text-gray-600 text-xl font-semibold dark:text-white text-center uppercase'>Daily activities</p>
       </div>
     </div>
   )
