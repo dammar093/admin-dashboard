@@ -100,7 +100,7 @@ const Dashboard = () => {
             <img className='w-full h-[100%] object-cover' src={cart} alt="" />
           </div>
         </div>
-        <div className={sidebar ? 'flex  gap-2 justify-between  md:gap-7 md:justify-stretch  flex-wrap mt-4' : 'flex  gap-2 justify-between  md:gap-5 md:justify-stretch  flex-wrap mt-4'}>
+        <div className={sidebar ? 'flex  gap-2 justify-between  md:gap-7 md:justify-stretch  flex-wrap mt-4' : 'flex  gap-2 justify-between  md:gap-5 md:justify-stretch  flex-wrap mt-4 dark:text-white'}>
           {
             data.map((item) => (
               <DashboardItem key={item.id} item={item} />
