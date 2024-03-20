@@ -7,8 +7,7 @@ import { CiDark } from "react-icons/ci";
 import { darkMode, lightMode } from '../../feature/theme/themeSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleSidebar } from '../../feature/sidebar/sidebarSlice';
-
-
+import image from '../../assets/dyM.jpg'
 
 const Navbar = () => {
   const [showProfile, setShowProfile] = useState(false)
@@ -54,7 +53,7 @@ const Navbar = () => {
             }
           </div>
           <div className='flex items-center'>
-            <img className='w-12 h-12 rounded-full  shadow-2xl shadow-slate-500/50 border-2 border-white border-solid cursor-pointer' src="https://media.licdn.com/dms/image/D4D35AQFP6-EF9PC1lg/profile-framedphoto-shrink_400_400/0/1708596180799?e=1710327600&v=beta&t=A7LNXqkbKGmp2uXzBeR5UAXhWnFVxLVOFAMv1TRpShE" alt="" onClick={() => setShowProfile(prev => !prev)} />
+            <img className='w-12 h-12 rounded-full  shadow-2xl shadow-slate-500/50 border-2 border-white border-solid cursor-pointer' src={image} alt="" onClick={() => setShowProfile(prev => !prev)} />
             <MdKeyboardArrowDown className='text-white text-l font-semibold' />
             <span className='text-white text-l font-semibold capitalize'>Hello Dyams</span>
           </div>

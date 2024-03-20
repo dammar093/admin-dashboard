@@ -7,7 +7,7 @@ const Barchart = () => {
       <BarChart
         xAxis={[{ scaleType: 'band', data: ['Day 1', 'Day 2', 'Day 3'] }]}
         series={[{ data: [4, 3, 5] }, { data: [1, 6, 3] }, { data: [2, 5, 6] }]}
-        width={500}
+        width={300}
         height={300}
       />
     </>

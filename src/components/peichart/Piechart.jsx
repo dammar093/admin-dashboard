@@ -14,7 +14,7 @@ const Piechart = () => {
             ],
           },
         ]}
-        width={400}
+        width={360}
         height={200}
       />
     </>

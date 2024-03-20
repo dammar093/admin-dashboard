@@ -107,7 +107,7 @@ const Dashboard = () => {
             ))
           }
         </div>
-        <div className='flex justify-strech gap-2 items-center flex-wrap text-gray-600 dark:text-white'>
+        <div className='flex justify-center  gap-2 items-center flex-wrap text-gray-600 dark:text-white'>
           <div>
             <Barchart />
           </div>
