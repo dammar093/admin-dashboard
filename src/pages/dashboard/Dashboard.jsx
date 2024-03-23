@@ -39,7 +39,7 @@ const Dashboard = () => {
     },
     {
       id: 3,
-      title: 'deleivered',
+      title: 'delivered',
       revenue: 1200,
       icon: FaCarSide,
       text: 'text-green-400',
